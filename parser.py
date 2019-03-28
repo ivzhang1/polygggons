@@ -74,7 +74,7 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
 
         elif line == 'torus':
             #print 'TORUS\t' + str(args)
-            add_torus(edges,
+            add_torus(polygons,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), step_3d)
 
@@ -141,8 +141,10 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
 
         elif line == 'display' or line == 'save':
             clear_screen(screen)
-            draw_lines(edges, screen, color)
-            draw_polygons(polygons, screen, color)
+            if len(edges) > 2:
+                draw_lines(edges, screen, color)
+            if len(polygons) > 3:
+                draw_polygons(polygons, screen, color)
 
             if line == 'display':
                 display(screen)
