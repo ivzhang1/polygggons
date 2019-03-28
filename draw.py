@@ -1,6 +1,6 @@
 from display import *
 from matrix import *
-
+from gmath import *
 
 def add_polygon( polygons, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point(polygons, x0, y0, z0)
@@ -13,10 +13,10 @@ def draw_polygons( polygons, screen, color ):
         return
 
     for i in range(0, len(polygons), 3):
-
-        draw_line(int(polygons[i][0]), int(polygons[i][1]), int(polygons[i+1][0]), int(polygons[i+1][1]), screen, color)
-        draw_line(int(polygons[i+1][0]), int(polygons[i+1][1]), int(polygons[i+2][0]), int(polygons[i+2][1]), screen, color)
-        draw_line(int(polygons[i][0]), int(polygons[i][1]), int(polygons[i+2][0]), int(polygons[i+2][1]), screen, color)
+        if(calculate_normal(polygons, i)[2] > 0):
+            draw_line(int(polygons[i][0]), int(polygons[i][1]), int(polygons[i+1][0]), int(polygons[i+1][1]), screen, color)
+            draw_line(int(polygons[i+1][0]), int(polygons[i+1][1]), int(polygons[i+2][0]), int(polygons[i+2][1]), screen, color)
+            draw_line(int(polygons[i][0]), int(polygons[i][1]), int(polygons[i+2][0]), int(polygons[i+2][1]), screen, color)
 
     #print(polygons)
 
