@@ -60,7 +60,7 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
 
             final = first + 1
 
-            if longt != 0 and longt != step - 2:
+            if longt != step - 2:
                 p0 = points[first]
                 p2 = points[final]
                 add_polygon(polygons, p0[0], p0[1], p0[2], p1[0], p1[1], p1[2], p2[0], p2[1], p2[2])
